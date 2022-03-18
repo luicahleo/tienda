@@ -24,8 +24,8 @@ class CreateSubcategoriesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
 
             //ahora campos boleanos
-            $table->boolean('color');
-            $table->boolean('size');
+            $table->boolean('color')->default(false); //el default(false) es por si no especificamos el color o size no necesitamos ingresar el dato,, este estara en false
+            $table->boolean('size')->default(false);
 
             $table->timestamps();
         });
