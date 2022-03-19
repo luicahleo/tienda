@@ -21,10 +21,12 @@ class DatabaseSeeder extends Seeder
         //borramos las antiguas imagenes
         Storage::deleteDirectory('categories');
         Storage::deleteDirectory('subcategories');
+        Storage::deleteDirectory('products');
 
         //creo la carpeta products
         Storage::makeDirectory('categories');
         Storage::makeDirectory('subcategories');
+        Storage::makeDirectory('products');
 
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
