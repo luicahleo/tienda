@@ -9,6 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    const BORRADOR = 1;
+    const PUBLICADO =2;
+
     //hay dos maneras de la usar la asignacion masiva
     //1ra declarar cada uno de los campos
     //2do declarar los que no quiero que se asigne, el resto si, guarded define los campos que queremos desabilitar
