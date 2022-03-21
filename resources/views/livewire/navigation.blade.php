@@ -17,5 +17,6 @@
         </a>
 
         @livewire('search')
+        
     </div>
 </header>
