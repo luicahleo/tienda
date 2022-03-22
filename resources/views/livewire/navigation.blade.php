@@ -19,7 +19,7 @@
         @livewire('search')
 
         <!-- Settings Dropdown -->
-        <div class="ml-3 relative">
+        <div class="mx-6 relative ">
             {{-- solo vamos a mostrar la imagen si es que estamos logueados --}}
             @auth
                 <x-jet-dropdown align="right" width="48">
@@ -74,6 +74,8 @@
             </x-jet-dropdown>
             @endauth
         </div>
+
+        @livewire('dropdown-cart')
 
     </div>
 </header>
