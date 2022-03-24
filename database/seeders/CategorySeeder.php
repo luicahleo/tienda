@@ -20,27 +20,27 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Celulares y tablets',
                 'slug' => Str::slug('Celulares y tablets'), //la clase Str me permite usar slug
-                'icon' => '<i class="fa-solid fa-mobile-screen"></i>'
+                'icon' => '<i class="fas fa-mobile-screen"></i>'
             ],
             [
                 'name' => 'TV, audio y video',
                 'slug' => Str::slug('TV, audio y video'), //la clase Str me permite usar slug
-                'icon' => '<i class="fa-solid fa-tv-music"></i>'
+                'icon' => '<i class="fas fa-tv-music"></i>'
             ],
             [
                 'name' => 'Consola y videojuegos',
                 'slug' => Str::slug('Consola y videojuegos'), //la clase Str me permite usar slug
-                'icon' => '<i class="fa-solid fa-gamepad-modern"></i>'
+                'icon' => '<i class="fas fa-gamepad-modern"></i>'
             ],
             [
                 'name' => 'Computacion',
                 'slug' => Str::slug('Computacion'), //la clase Str me permite usar slug
-                'icon' => '<i class="fa-solid fa-laptop"></i>'
+                'icon' => '<i class="fas fa-laptop"></i>'
             ],
             [
                 'name' => 'Moda',
                 'slug' => Str::slug('Moda'), //la clase Str me permite usar slug
-                'icon' => '<i class="fa-solid fa-shirt"></i>'
+                'icon' => '<i class="fas fa-shirt"></i>'
             ],
         ];
 
