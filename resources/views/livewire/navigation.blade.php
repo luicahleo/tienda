@@ -1,12 +1,12 @@
-
 <style>
-    #navigation-menu{
+    #navigation-menu {
         height: calc(100vh - 4rem);
     }
+
 </style>
 
 
-{{-- sticky top-0  esto es para que el menu se quede pegado en la parte de arriba y al hacer scroll no baje con nostros--}}
+{{-- sticky top-0  esto es para que el menu se quede pegado en la parte de arriba y al hacer scroll no baje con nostros --}}
 <header class="bg-trueGray-700 sticky top-0  ">
     <div class="container flex items-center h-16 ">
         <a href=""
@@ -63,24 +63,24 @@
                     </x-slot>
                 </x-jet-dropdown>
             @else
-            <x-jet-dropdown align="right" width="48">
+                <x-jet-dropdown align="right" width="48">
 
-                <x-slot name="trigger">
-                    <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
-                </x-slot>
+                    <x-slot name="trigger">
+                        <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
+                    </x-slot>
 
-                <x-slot name="content">
-                    
-                    <x-jet-dropdown-link href="{{ route('login') }}">
-                        {{ __('Login') }}
-                    </x-jet-dropdown-link>
+                    <x-slot name="content">
 
-                    <x-jet-dropdown-link href="{{ route('register') }}">
-                        {{ __('Register') }}
-                    </x-jet-dropdown-link>
-                </x-slot>
-            
-            </x-jet-dropdown>
+                        <x-jet-dropdown-link href="{{ route('login') }}">
+                            {{ __('Login') }}
+                        </x-jet-dropdown-link>
+
+                        <x-jet-dropdown-link href="{{ route('register') }}">
+                            {{ __('Register') }}
+                        </x-jet-dropdown-link>
+                    </x-slot>
+
+                </x-jet-dropdown>
             @endauth
         </div>
 
@@ -94,29 +94,47 @@
             <div class="grid grid-cols-4 h-full relative">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
-                    <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
-                        <a href="" class="py-2 px-4 text-sm flex items-center">
-                            <span class="flex justify-center w-9">
-                                {{-- {!! xxxx !!} con  esto escapamos el codigo html, es decir para que nos imprima el codigo html y no lo imprima como texto plano --}}
-                                {!!$category->icon!!}
-                            </span>
-                            {{$category->name}}
-                        </a>
+                        <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
+                            <a href="" class="py-2 px-4 text-sm flex items-center">
+                                <span class="flex justify-center w-9">
+                                    {{-- {!! xxxx !!} con  esto escapamos el codigo html, es decir para que nos imprima el codigo html y no lo imprima como texto plano --}}
+                                    {!! $category->icon !!}
+                                </span>
+                                {{ $category->name }}
+                            </a>
 
-                        <div class=" bg-red-500 absolute w-3/4 h-full top-0 right-0">
-
-                        </div>
-                    </li>
-                        
+                            <div class=" bg-red-500 absolute w-3/4 h-full top-0 right-0 hidden">
+                            </div>
+                        </li>
                     @endforeach
 
                 </ul>
                 <div class="col-span-3 bg-gray-100">
 
+                    <div class="grid grid-cols-4 p-4">
+                        <div>
+                            <p class="text-lg font-bold text-center text-trueGray-500 mb-3">Subcategorias</p>
+
+                            <ul>
+                                @foreach ($categories->first()->subcategories as $subcategory)
+                                    <li>
+                                        <a href=""
+                                            class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-orange-500">
+                                            {{ $subcategory->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="col-span-3">
+                            <img class="h-64 w-full object-cover object-center"
+                                src="{{ Storage::url($categories->first()->image) }}" alt="">
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
-
-        </div>
     </nav>
 </header>
