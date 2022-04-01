@@ -1,17 +1,18 @@
 {{-- sticky top-0  esto es para que el menu se quede pegado en la parte de arriba y al hacer scroll no baje con nostros --}}
 {{-- voy a usar Alpine porque ya viene instalado con jetstream, y cuando uso x-data, alpine considera que solo trabajara 
     en esa parte usandolo como componente, pudiendo asi usar las variables en otro lugar donde defina x-data --}}
-<header class="sticky top-0 bg-trueGray-700" x-data="dropdown()">
-    <div class="container flex items-center h-16 ">
-        {{-- icono que contiene la palabra categorias --}}
-        <a x-on:click="show()"
-            class="flex flex-col items-center justify-center h-full px-4 font-semibold text-white bg-white bg-opacity-25 cursor-pointer">
-            <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <span>Categorias</span>
-        </a>
+    <header class="bg-trueGray-700 sticky top-0" style="z-index: 900" x-data="dropdown()">
+        <div class="container flex items-center h-16 justify-between md:justify-start">
+            <a  :class="{'bg-opacity-100 text-orange-500' : open}"
+                x-on:click="show()"
+                class="flex flex-col items-center justify-center order-last md:order-first px-6 md:px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+    
+                <span class="text-sm hidden md:block">Categorías</span>
+            </a>
         {{-- no olvidarme, para usar componentes jetstream, tengo que publicarlos con php artisan vendor:publish --tag=jetstream-views --}}
         {{-- los componentes ahora estana en, resources/views/vendor\jetstream --}}
 
@@ -19,11 +20,13 @@
             <x-jet-application-mark class="block w-auto h-9" />
 
         </a>
+        <div class="flex-1 hidden md:block">
+            @livewire('search')
 
-        @livewire('search')
+        </div>
 
         <!-- Settings Dropdown -->
-        <div class="relative mx-6 ">
+        <div class="relative hidden mx-6 md:block">
             {{-- solo vamos a mostrar la imagen si es que estamos logueados --}}
             @auth
                 <x-jet-dropdown align="right" width="48">
@@ -79,21 +82,19 @@
             @endauth
         </div>
 
-        @livewire('dropdown-cart')
+        <div class="hidden mx-6 md:block">
+            @livewire('dropdown-cart')
+
+        </div>
 
     </div>
     {{-- la parte de :class..... es para que tome el valor de la variable open, porque no se abria el menu al poner la clase hidden --}}
-    <nav id="navigation-menu" 
-        x-on:click="show()"
-
-
-        :class="{'block': open, 'hidden': !open}"
-        class="absolute w-full bg-opacity-25 bg-trueGray-700">
+    <nav id="navigation-menu" :class="{'block': open, 'hidden': !open}" class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
 
         <div class="container h-full">
-            
+
             {{-- el evento x-on-click.away es para ejecutar la accion cuando das click en cualquier parte menos en la del menu --}}
-            <div x-on:click.away="close()" class="relative grid h-full grid-cols-4" >
+            <div x-on:click.away="close()" class="relative grid h-full grid-cols-4">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class=" navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
@@ -125,4 +126,3 @@
             </div>
     </nav>
 </header>
-
