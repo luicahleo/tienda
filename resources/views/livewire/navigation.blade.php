@@ -1,3 +1,4 @@
+
 {{-- sticky top-0  esto es para que el menu se quede pegado en la parte de arriba y al hacer scroll no baje con nostros --}}
 {{-- voy a usar Alpine porque ya viene instalado con jetstream, y cuando uso x-data, alpine considera que solo trabajara 
     en esa parte usandolo como componente, pudiendo asi usar las variables en otro lugar donde defina x-data --}}
@@ -89,12 +90,13 @@
 
     </div>
     {{-- la parte de :class..... es para que tome el valor de la variable open, porque no se abria el menu al poner la clase hidden --}}
-    <nav id="navigation-menu" :class="{'block': open, 'hidden': !open}" class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
+    <nav id="navigation-menu" :class="{'block': open, 'hidden': !open}" class="bg-opacity-25 bg-trueGray-700 w-full absolute hidden">
 
-        <div class="container h-full">
+        {{-- Menu Computadora --}}
+        <div class="container h-full hidden md:block">
 
             {{-- el evento x-on-click.away es para ejecutar la accion cuando das click en cualquier parte menos en la del menu --}}
-            <div x-on:click.away="close()" class="relative grid h-full grid-cols-4">
+            <div x-on:click.away="close()" class=" grid grid-cols-4 h-full relative">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class=" navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
@@ -124,5 +126,27 @@
                 </div>
 
             </div>
+        </div>
+
+        {{--  Menu mobil --}}
+        <div class="bg-white h-full overflow-y-auto">
+            <div class="container bg-gray-200 py-3 mb-2">
+                @livewire('search')
+            </div>
+            <ul>
+                @foreach ($categories as $category)
+                <li class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
+                    <a href="" class="flex items-center px-4 py-2 text-sm">
+                        <span class="flex justify-center w-9">
+                            {{-- {!! xxxx !!} con  esto escapamos el codigo html, es decir para que nos imprima el codigo html y no lo imprima como texto plano --}}
+                            {!! $category->icon !!}
+                        </span>
+                        {{ $category->name }}
+                    </a>
+                    </li>
+                @endforeach
+            </ul>
+
+        </div>
     </nav>
 </header>

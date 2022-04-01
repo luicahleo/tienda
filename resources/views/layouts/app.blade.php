@@ -42,7 +42,7 @@
         <script>
             function dropdown(){
                 return {
-                    open: false,
+                    open: true,
                     show(){
                         if(this.open){
                             //Se cierra el menu
