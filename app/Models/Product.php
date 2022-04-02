@@ -36,6 +36,7 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
+    //n:n
     public function colors()
     {
         return $this->belongsToMany(Color::class);
