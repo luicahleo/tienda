@@ -9,6 +9,14 @@ class CategoryProducts extends Component
 
     public $category;
 
+    public $products = [];
+
+    function loadPosts(){
+        $this->products = $this->category->products;
+
+        $this->emit('glider');
+    }
+
 
     public function render()
     {
