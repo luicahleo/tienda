@@ -21,10 +21,10 @@
                 
                 new Glider(document.querySelector('.glider-'+ id), {
                     slidesToShow: 5.5,
-                    dots: '#dots',
+                    dots: '.glider-' + id + '~ .dots',
                     arrows: {
-                        prev: '.glider-prev',
-                        next: '.glider-next'
+                        prev: '.glider-' + id + '~ .glider-prev',
+                        next: '.glider-' + id + '~ .glider-next',
                     }
                 });
 
