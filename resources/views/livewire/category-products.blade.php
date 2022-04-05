@@ -7,11 +7,11 @@
         <ul class="glider-{{$category->id}}">
             @foreach ( $products as $product)
 
-            <li class="bg-white rounded-lg shadow  {{ $loop->last ? '' : 'mr-4'}}">
+            <li class="bg-white rounded-lg shadow  {{ $loop->last ? '' : 'sm:mr-4'}}">
 
                 <article>
                     <figure>
-                        <img src="{{ Storage::url($product->images->first()->url )}}" alt="">
+                        <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url )}}" alt="">
 
                     </figure>
 
