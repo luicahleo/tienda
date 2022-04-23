@@ -1,4 +1,3 @@
-
 {{-- aqui recibimos el nombre de la categoria para mostrar su subcategorias, con esta variable --}}
 @props(['category'])
 
