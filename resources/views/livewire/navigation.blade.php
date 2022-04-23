@@ -93,17 +93,16 @@
 
     <nav id="navigation-menu"
         :class="{'block': open, 'hidden': !open}"
-        class="absolute hidden w-full bg-opacity-25 bg-trueGray-700">
+        class="bg-trueGray-700 bg-opacity-25 w-full absolute hidden">
 
         {{-- Menu computadora --}}
-        <div class="container hidden h-full lg:block">
-            <div
-                x-on:click.away="close()"
-                class="relative grid h-full grid-cols-4">
+        <div class="container h-full hidden xl:block">
+            <div x-on:click.away="close()"
+            class="grid grid-cols-4 h-full relative">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class="navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
-                            <a href="{{ route('categories.show', $category) }}" class="flex items-center px-4 py-2 text-sm">
+                            <a href="{{ route('categories.show', $category) }}"  class="py-2 px-4 text-sm flex items-center">
 
                                 <span class="flex justify-center w-9">
                                     {!!$category->icon!!}
@@ -113,7 +112,7 @@
                             </a>
 
 
-                            <div class="absolute top-0 right-0 hidden w-3/4 h-full bg-gray-100 navigation-submenu">
+                            <div class="navigation-submenu bg-gray-100 absolute w-3/4 h-full top-0 right-0 hidden">
                                 <x-navigation-subcategories :category="$category" />
                             </div>
 
